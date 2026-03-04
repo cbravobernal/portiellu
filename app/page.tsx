@@ -1,0 +1,237 @@
+import Image from "next/image";
+import ReservaForm from "../components/ReservaForm";
+import LightboxGallery from "../components/LightboxGallery";
+
+const img = (name: string) => `/images/optimized/${name}.webp`;
+
+const heroImage = img("IMG_9045");
+
+const spaceGalleries = [
+  {
+    space: "Salón y cocina",
+    summary: "Zona de estar abierta con cocina equipada, mesa y luz natural.",
+    images: [img("IMG_6209"), img("IMG_9036"), img("IMG_8571"), img("IMG_8847")]
+  },
+  {
+    space: "Dormitorio",
+    summary: "Habitación principal con ropa de cama cuidada y ambiente tranquilo.",
+    images: [img("IMG_8936"), img("IMG_8825"), img("IMG_8566"), img("IMG_6234")]
+  },
+  {
+    space: "Terraza y balcón",
+    summary: "Espacios exteriores para desayunar, leer o cenar con vistas.",
+    images: [img("IMG_8576"), img("IMG_8564"), img("IMG_8783"), img("IMG_8565")]
+  },
+  {
+    space: "Fachada y entorno",
+    summary: "Arquitectura rural y ambiente natural en pleno oriente asturiano.",
+    images: [
+      img("084CF6D9-8395-4FBA-92C4-5D6A275EE42D"),
+      img("IMG_8717"),
+      img("IMG_8582"),
+      img("IMG_8544")
+    ]
+  }
+];
+
+const amenities = [
+  {
+    title: "Casa completa para ti",
+    text: "Sin compartir espacios y con privacidad total."
+  },
+  {
+    title: "Acceso cómodo",
+    text: "Perfecta para escapadas cortas en cualquier época del año."
+  },
+  {
+    title: "Terraza con vistas",
+    text: "Un extra diferencial para desayunar o descansar al atardecer."
+  },
+  {
+    title: "Base para rutas",
+    text: "Buena ubicación para Covadonga, Cangas y pueblos cercanos."
+  }
+];
+
+const planIdeas = [
+  {
+    day: "Día 1",
+    title: "Cangas y gastronomía",
+    text: "Paseo por el centro, puente romano y cena de cocina asturiana."
+  },
+  {
+    day: "Día 2",
+    title: "Lagos de Covadonga",
+    text: "Ruta panorámica por la mañana y tarde de descanso en la casa."
+  },
+  {
+    day: "Día 3",
+    title: "Costa oriental",
+    text: "Excursión a Ribadesella o Llanes antes de volver."
+  }
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  name: "Casa Rural en Cangas de Onís",
+  description:
+    "Alojamiento rural en Cangas de Onís, Asturias, con solicitud de reserva directa.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Cangas de Onís",
+    addressRegion: "Asturias",
+    addressCountry: "ES"
+  },
+  areaServed: "Asturias",
+  url: "https://example.com",
+  image: spaceGalleries
+    .flatMap((group) => group.images)
+    .map((img) => `https://example.com${img}`)
+};
+
+export default function HomePage() {
+  return (
+    <main className="site">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
+      <header className="topbar reveal">
+        <p className="brand">Apartamentos Rurales El Portiellu</p>
+        <nav className="menu">
+          <a href="#alojamiento">Alojamiento</a>
+          <a href="#galeria">Galería</a>
+          <a href="#entorno">Planes</a>
+          <a href="#reserva">Reservar</a>
+          <a href="/en" className="lang-switch">
+            EN
+          </a>
+        </nav>
+      </header>
+
+      <section className="hero reveal">
+        <figure className="hero-image">
+          <Image
+            src={heroImage}
+            alt="Vista exterior del alojamiento rural en Cangas de Onís"
+            width={1800}
+            height={1200}
+            sizes="100vw"
+            quality={82}
+            priority
+          />
+        </figure>
+        <div className="hero-gradient" />
+        <div className="hero-copy">
+          <p className="kicker">Cangas de Onís, Asturias</p>
+          <h1>Casa rural con encanto para desconectar de verdad</h1>
+          <p>
+            Tranquilidad, naturaleza y una base perfecta para disfrutar del
+            oriente asturiano con escapadas de 2 a 7 días.
+          </p>
+          <div className="hero-actions">
+            <a href="#reserva" className="cta">
+              Pedir disponibilidad
+            </a>
+            <a href="#galeria" className="ghost">
+              Ver espacios
+            </a>
+          </div>
+        </div>
+        <ul className="hero-metrics">
+          <li>
+            <strong>4 zonas</strong>
+            <span>Interiores y exteriores diferenciados</span>
+          </li>
+          <li>
+            <strong>Entorno natural</strong>
+            <span>Montaña, rutas y pueblos cercanos</span>
+          </li>
+          <li>
+            <strong>Reserva directa</strong>
+            <span>Solicitud simple desde formulario</span>
+          </li>
+        </ul>
+      </section>
+
+      <section className="section reveal" id="alojamiento">
+        <div className="section-head">
+          <p className="eyebrow">Alojamiento</p>
+          <h2>Lo mejor de la casa</h2>
+          <p>
+            Diseño sencillo, funcional y acogedor. Todo pensado para una
+            estancia cómoda desde el primer día.
+          </p>
+        </div>
+        <div className="amenities">
+          {amenities.map((item) => (
+            <article key={item.title} className="amenity">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section reveal" id="galeria">
+        <div className="section-head">
+          <p className="eyebrow">Galería</p>
+          <h2>Espacios de la casa</h2>
+          <p>Fotos organizadas por zonas para ver rápido todo el alojamiento.</p>
+        </div>
+        {spaceGalleries.map((group) => (
+          <article className="space-block" key={group.space}>
+            <div className="space-head">
+              <h3>{group.space}</h3>
+              <p>{group.summary}</p>
+            </div>
+            <LightboxGallery title={group.space} images={group.images} lang="es" />
+          </article>
+        ))}
+      </section>
+
+      <section className="section split reveal" id="entorno">
+        <div className="stack">
+          <p className="eyebrow">Entorno</p>
+          <h2>Plan sugerido para tu escapada</h2>
+          <p>
+            Si vienes pocos días, este orden te permite ver lo esencial sin ir
+            con prisas.
+          </p>
+          <div className="timeline">
+            {planIdeas.map((item) => (
+              <article key={item.day} className="stop">
+                <p className="day">{item.day}</p>
+                <h4>{item.title}</h4>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+        <aside className="stack callout">
+          <p className="eyebrow">Reserva</p>
+          <h3>Consulta fechas sin compromiso</h3>
+          <p>
+            Envía tu solicitud y te respondemos con disponibilidad, precio final
+            y condiciones de estancia.
+          </p>
+          <a href="#reserva" className="cta cta-inline">
+            Ir al formulario
+          </a>
+        </aside>
+      </section>
+
+      <section className="section form-wrap reveal" id="reserva">
+        <p className="eyebrow">Formulario</p>
+        <h2>Solicitud de reserva</h2>
+        <p>
+          Completa los datos básicos. Te responderemos con disponibilidad y los
+          siguientes pasos para confirmar.
+        </p>
+        <ReservaForm lang="es" />
+      </section>
+    </main>
+  );
+}
