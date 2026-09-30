@@ -126,7 +126,7 @@ export default function HomePage() {
         <div className="hero-gradient" />
         <div className="hero-copy">
           <p className="kicker">Cangas de Onís, Asturias</p>
-          <h1>Casa rural con encanto para desconectar de verdad</h1>
+          <h1>Casa rural en Cangas de Onís, junto a Covadonga y los Picos de Europa</h1>
           <p>
             Tranquilidad, naturaleza y una base perfecta para disfrutar del
             oriente asturiano con escapadas de 2 a 7 días.
