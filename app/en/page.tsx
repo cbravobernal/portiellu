@@ -91,10 +91,10 @@ const structuredData = {
     addressCountry: "ES"
   },
   areaServed: "Asturias",
-  url: "https://example.com/en",
+  url: "https://elportiellu.com/en",
   image: spaceGalleries
     .flatMap((group) => group.images)
-    .map((imagePath) => `https://example.com${imagePath}`)
+    .map((imagePath) => `https://elportiellu.com${imagePath}`)
 };
 
 export default function EnglishHomePage() {

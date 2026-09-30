@@ -196,7 +196,7 @@ export async function POST(request: Request) {
   const recipientEmail = process.env.RESERVAS_EMAIL ?? "apartamentoselportiellu@gmail.com";
   const host = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
   const requestOrigin =
-    request.headers.get("origin") ?? (host ? `https://${host}` : "https://casarural-two.vercel.app");
+    request.headers.get("origin") ?? (host ? `https://${host}` : "https://elportiellu.com");
   const requestReferer = request.headers.get("referer") ?? requestOrigin;
 
   const payload = {

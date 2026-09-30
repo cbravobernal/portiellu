@@ -84,10 +84,10 @@ const structuredData = {
     addressCountry: "ES"
   },
   areaServed: "Asturias",
-  url: "https://example.com",
+  url: "https://elportiellu.com",
   image: spaceGalleries
     .flatMap((group) => group.images)
-    .map((img) => `https://example.com${img}`)
+    .map((img) => `https://elportiellu.com${img}`)
 };
 
 export default function HomePage() {

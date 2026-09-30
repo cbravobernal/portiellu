@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Casa Rural en Cangas de Onís | Reserva Directa",
   description:
     "Casa rural en Cangas de Onís, Asturias. Consulta disponibilidad y envía tu solicitud de reserva desde el formulario.",
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL("https://elportiellu.com"),
   openGraph: {
     title: "Casa Rural en Cangas de Onís",
     description:
